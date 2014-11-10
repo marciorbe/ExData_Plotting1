@@ -10,11 +10,24 @@ work[,"Sub_metering_1"] <- as.numeric(work[,"Sub_metering_1"])
 work[,"Sub_metering_2"] <- as.numeric(work[,"Sub_metering_2"])
 work[,"Sub_metering_3"] <- as.numeric(work[,"Sub_metering_3"])
 
-png(filename = "plot2.png", width = 480, height = 480, bg="transparent")
+png(filename = "plot3.png", width = 480, height = 480, bg="transparent")
+
 with(work, plot( strptime( paste(as.character(work[,"Date"]),work[,"Time"]) , "%Y-%m-%d %H:%M:%S"), 
-                 Global_active_power,
+                 Sub_metering_1,
 				 type = "l",                 
-	             ylab = "Global Active Power (kilowwatts)",
+	             ylab = "Energy sub metering",
 	             xlab = "",
-	             main = "" ) )	  
+	             main = "" ) )	
+				 
+with(work, points( strptime( paste(as.character(work[,"Date"]),work[,"Time"]) , "%Y-%m-%d %H:%M:%S"), 
+                   Sub_metering_2,
+				   col="red",
+				   type = "l") )	
+
+with(work, points( strptime( paste(as.character(work[,"Date"]),work[,"Time"]) , "%Y-%m-%d %H:%M:%S"), 
+                   Sub_metering_3,col="blue",
+				   type = "l") )
+				   
+legend("topright", pch = "-", col = c("black", "red","blue"), legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+
 dev.off()

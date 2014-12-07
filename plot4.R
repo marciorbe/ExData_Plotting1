@@ -1,3 +1,5 @@
+Sys.setlocale("LC_TIME", "English")
+
 ccls <- c("character","character","character","character","character","character","character","character","character")
 data <- read.csv("household_power_consumption.txt",sep=";",colClasses=ccls)
 data[,"Date"] <- as.Date(data[,"Date"],format="%d/%m/%Y")
@@ -44,7 +46,7 @@ with(work, points( strptime( paste(as.character(work[,"Date"]),work[,"Time"]) , 
                    Sub_metering_3,col="blue",
 				   type = "l") )
 				   
-legend("topright", pch = "-", col = c("black", "red","blue"), legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+legend("topright", lty=1, col = c("black", "red","blue"), legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
 
 with(work, plot( strptime( paste(as.character(work[,"Date"]),work[,"Time"]) , "%Y-%m-%d %H:%M:%S"), 
                  Global_reactive_power,

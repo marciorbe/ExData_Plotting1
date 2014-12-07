@@ -1,3 +1,5 @@
+Sys.setlocale("LC_TIME", "English")
+
 ccls <- c("character","character","character","character","character","character","character","character","character")
 data <- read.csv("household_power_consumption.txt",sep=";",colClasses=ccls)
 data[,"Date"] <- as.Date(data[,"Date"],format="%d/%m/%Y")
@@ -17,3 +19,5 @@ with(work, hist( Global_active_power,
 	             ylab = "Frequency",
 	             main = "Global Active Power" ) )	  
 dev.off()
+
+
